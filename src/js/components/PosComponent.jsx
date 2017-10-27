@@ -19,48 +19,48 @@ import Label from 'grommet/components/Label'
 import Paragraph from 'grommet/components/Paragraph'
 import NumberInput from 'grommet/components/NumberInput'
 
-//import ArrayHelper from '../helpers/Array.js'
-import ObjectHelper from '../helpers/Object.js'
-//import StringHelper from '../helpers/String.js'
+//import ArrayHelper from 'quickcommerce-react/helpers/Array.js'
+import ObjectHelper from 'quickcommerce-react/helpers/Object.js'
+//import StringHelper from 'quickcommerce-react/helpers/String.js'
 
-import AuthenticatedComponent from './AuthenticatedComponent.jsx'
+import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
 
-import TopMenu from './menu/TopMenu.jsx'
-import AccountMenu from './menu/AccountMenu.jsx'
+import TopMenu from 'quickcommerce-react/components/menu/TopMenu.jsx'
+import AccountMenu from 'quickcommerce-react/components/menu/AccountMenu.jsx'
 
-import DragDropContainer from './cart/DragDropContainer.jsx'
-import DragDropCartRow from './cart/DragDropCartRow.jsx'
-import CartDropTarget from './cart/CartDropTarget.jsx'
-import CartDragItem from './cart/CartDragItem.jsx'
-import CatalogRow from './catalog/CatalogRow.jsx'
-import CategoryRow from './catalog/CategoryRow.jsx'
-import ProductRow from './catalog/ProductRow.jsx'
-import ProductOptionRow from '../components/catalog/ProductOptionRow.jsx'
+import DragDropContainer from 'quickcommerce-react/components/cart/DragDropContainer.jsx'
+import DragDropCartRow from 'quickcommerce-react/components/cart/DragDropCartRow.jsx'
+import CartDropTarget from 'quickcommerce-react/components/cart/CartDropTarget.jsx'
+import CartDragItem from 'quickcommerce-react/components/cart/CartDragItem.jsx'
+import CatalogRow from 'quickcommerce-react/components/catalog/CatalogRow.jsx'
+import CategoryRow from 'quickcommerce-react/components/catalog/CategoryRow.jsx'
+import ProductRow from 'quickcommerce-react/components/catalog/ProductRow.jsx'
+import ProductOptionRow from 'quickcommerce-react/components/catalog/ProductOptionRow.jsx'
 
-import Stepper from './stepper/BrowserStepper.jsx'
-import BrowserActions from '../actions/BrowserActions.jsx'
-import BrowserStore from '../stores/BrowserStore.jsx'
+import Stepper from 'quickcommerce-react/components/stepper/BrowserStepper.jsx'
+import BrowserActions from 'quickcommerce-react/actions/BrowserActions.jsx'
+import BrowserStore from 'quickcommerce-react/stores/BrowserStore.jsx'
 
-import CheckoutActions from '../actions/CheckoutActions.jsx'
-import CheckoutService from '../services/CheckoutService.jsx'
+import CheckoutActions from 'quickcommerce-react/actions/CheckoutActions.jsx'
+import CheckoutService from 'quickcommerce-react/services/CheckoutService.jsx'
 
-import CustomerActions from '../actions/CustomerActions.jsx'
-import CustomerService from '../services/CustomerService.jsx'
+import CustomerActions from 'quickcommerce-react/actions/CustomerActions.jsx'
+import CustomerService from 'quickcommerce-react/services/CustomerService.jsx'
 
-import SettingActions from '../actions/SettingActions.jsx'
-import ProductActions from '../actions/ProductActions.jsx'
-import ProductBrowser from './browser/ProductBrowser.jsx'
-import BrowserMenu from './browser/BrowserMenu.jsx'
-import CustomerPicker from './customer/CustomerPicker.jsx'
-import SignInForm from './account/SignInForm.jsx'
-import CreditCardForm from './payment/CreditCardForm.jsx'
-import CustomerProfile from './customer/AuthenticatedCustomerProfile.jsx'
+import SettingActions from 'quickcommerce-react/actions/SettingActions.jsx'
+import ProductActions from 'quickcommerce-react/actions/ProductActions.jsx'
+import ProductBrowser from 'quickcommerce-react/components/browser/ProductBrowser.jsx'
+import BrowserMenu from 'quickcommerce-react/components/browser/BrowserMenu.jsx'
+import CustomerPicker from 'quickcommerce-react/components/customer/CustomerPicker.jsx'
+import SignInForm from 'quickcommerce-react/components/account/SignInForm.jsx'
+import CreditCardForm from 'quickcommerce-react/components/payment/CreditCardForm.jsx'
+import CustomerProfile from 'quickcommerce-react/components/customer/AuthenticatedCustomerProfile.jsx'
 
-import Keypad from './common/Keypad.jsx'
-import Notes from './common/Notes.jsx'
+import Keypad from 'quickcommerce-react/components/common/Keypad.jsx'
+import Notes from 'quickcommerce-react/components/common/Notes.jsx'
 
-import Cart from '../modules/Cart.jsx'
-import InternalCartStore from '../modules/CartStore.jsx'
+import Cart from 'quickcommerce-react/modules/Cart.jsx'
+import InternalCartStore from 'quickcommerce-react/modules/CartStore.jsx'
 
 // Dirty global hack to maintain store instance until I refactor 
 // this component to use context or switch from flux to redux
@@ -68,20 +68,20 @@ window.CartStore = (typeof window.CartStore === 'undefined') ? InternalCartStore
 
 let CartStore = window.CartStore
 
-import StarMicronicsStore from '../stores/StarMicronicsStore.jsx'
-import CheckoutStore from '../stores/CheckoutStore.jsx' // Will need for totals and stuff
-import ProductStore from '../stores/ProductStore.jsx'
-import SettingStore from '../stores/SettingStore.jsx'
+import StarMicronicsStore from 'quickcommerce-react/stores/StarMicronicsStore.jsx'
+import CheckoutStore from 'quickcommerce-react/stores/CheckoutStore.jsx' // Will need for totals and stuff
+import ProductStore from 'quickcommerce-react/stores/ProductStore.jsx'
+import SettingStore from 'quickcommerce-react/stores/SettingStore.jsx'
 
 import ToggleDisplay from 'react-toggle-display'
 import { bubble as MainMenu, fallDown as CustomerMenu } from 'react-burger-menu'
 
-import Factory from '../factory/Factory.jsx'
+import Factory from 'quickcommerce-react/factory/Factory.jsx'
 
-import StringHelper from '../helpers/String.js'
-import ArrayHelper from '../helpers/Array.js'
-import JSONHelper from '../helpers/JSON.js'
-import UrlHelper from '../helpers/URL.js'
+import StringHelper from 'quickcommerce-react/helpers/String.js'
+import ArrayHelper from 'quickcommerce-react/helpers/Array.js'
+import JSONHelper from 'quickcommerce-react/helpers/JSON.js'
+import UrlHelper from 'quickcommerce-react/helpers/URL.js'
 
 let fluxFactory = new Factory()
 
@@ -89,9 +89,9 @@ let categories = [] // Empty init containers
 let products = [] // Empty init containers
 
 // Pre-configured step types
-import CategoryStep from '../steps/Category.jsx'
-import ProductStep from '../steps/Product.jsx'
-import ProductOptionStep from '../steps/ProductOption.jsx'
+import CategoryStep from 'quickcommerce-react/steps/Category.jsx'
+import ProductStep from 'quickcommerce-react/steps/Product.jsx'
+import ProductOptionStep from 'quickcommerce-react/steps/ProductOption.jsx'
 
 /*import ChargeModal from './pos/ChargeModal.jsx'
 import CompleteModal from './pos/CompleteModal.jsx'

@@ -3,16 +3,16 @@
  * You can include any MainComponent. Here, we're including the QuickCommerce app itself.
  */
 if (!global.setTimeout) {
-    global.setTimeout = function() {};
+    global.setTimeout = function() {}
 }
 
 if (!global.setInterval) {
-    global.setInterval = function() {};
+    global.setInterval = function() {}
 }
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {renderToString} from 'react-dom/server';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {renderToString} from 'react-dom/server'
 
 import MainComponent from './QC.jsx'
 
@@ -22,5 +22,5 @@ if ('undefined' !== typeof document) {
         document.getElementById('main')
     )
 } else {
-    print(renderToString(<MainComponent />));
+    print(renderToString(<MainComponent />))
 }

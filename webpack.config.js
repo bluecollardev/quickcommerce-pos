@@ -87,6 +87,9 @@ module.exports = [{
         jquery: 'jQuery'
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.json']
-    }  
+        extensions: ['.js', '.jsx', '.json'],
+        alias: {
+			'quickcommerce-react': LIB_DIR + '/quickcommerce-react/src/js'
+		}
+    } 
 }]

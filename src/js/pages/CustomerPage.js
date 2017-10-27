@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
+import CustomerStore from 'quickcommerce-react/stores/CustomerStore.jsx'
+
 // Higher order component adds Auth functions
-import AuthenticatedComponent from '../components/AuthenticatedComponent.jsx'
+import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
+
 import CustomerComponent from '../components/CustomerComponent.jsx'
-import CustomerStore from '../stores/CustomerStore.jsx'
 
 export default AuthenticatedComponent(class CustomerPage extends Component {
     constructor(props) {

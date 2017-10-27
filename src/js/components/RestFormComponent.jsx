@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FormComponent from './FormComponent.jsx'
+import FormComponent from 'quickcommerce-react/components/FormComponent.jsx'
 
 /**
  * Proxy form handler for RESTful services

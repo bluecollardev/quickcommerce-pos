@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import StarRating from 'react-star-rating'
 
-import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap';
-import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap';
-import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, Checkbox, Radio, } from 'react-bootstrap';
+import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap'
+import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap'
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, Checkbox, Radio, } from 'react-bootstrap'
 
 import Griddle from 'griddle-react'
 
-import SignInForm from '../components/account/SignInForm.jsx' // TODO: Might be a good idea later to wrap this
+import SignInForm from 'quickcommerce-react/components/account/SignInForm.jsx' // TODO: Might be a good idea later to wrap this
 
 //TODO: Also implement a route based approach for later
 export default class LoginPage extends Component {

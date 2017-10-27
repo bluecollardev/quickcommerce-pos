@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import Anchor from 'grommet/components/Anchor';
-import Box from 'grommet/components/Box';
-import Card from 'grommet/components/Card';
-import Chart, { Area, Axis, Base, Layers } from 'grommet/components/chart/Chart';
-import Menu from 'grommet/components/Menu';
-import Footer from 'grommet/components/Footer';
-import FormField from 'grommet/components/FormField';
-import NumberInput from 'grommet/components/NumberInput';
-import Select from 'grommet/components/Select';
-import Heading from 'grommet/components/Heading';
-//import Hero from 'grommet/components/Hero';
-import Image from 'grommet/components/Image';
-import Label from 'grommet/components/Label';
-import TableHeader from 'grommet/components/TableHeader';
-import TableRow from 'grommet/components/TableRow';
-import Paragraph from 'grommet/components/Paragraph';
-import Quote from 'grommet/components/Quote';
-import Columns from 'grommet/components/Columns';
-import Tiles from 'grommet/components/Tiles';
-import Tile from 'grommet/components/Tile';
-import Section from 'grommet/components/Section';
-import SocialShare from 'grommet/components/SocialShare';
-import Video from 'grommet/components/Video';
-import CirclePlayIcon from 'grommet/components/icons/base/CirclePlay';
+import Anchor from 'grommet/components/Anchor'
+import Box from 'grommet/components/Box'
+import Card from 'grommet/components/Card'
+import Chart, { Area, Axis, Base, Layers } from 'grommet/components/chart/Chart'
+import Menu from 'grommet/components/Menu'
+import Footer from 'grommet/components/Footer'
+import FormField from 'grommet/components/FormField'
+import NumberInput from 'grommet/components/NumberInput'
+import Select from 'grommet/components/Select'
+import Heading from 'grommet/components/Heading'
+//import Hero from 'grommet/components/Hero'
+import Image from 'grommet/components/Image'
+import Label from 'grommet/components/Label'
+import TableHeader from 'grommet/components/TableHeader'
+import TableRow from 'grommet/components/TableRow'
+import Paragraph from 'grommet/components/Paragraph'
+import Quote from 'grommet/components/Quote'
+import Columns from 'grommet/components/Columns'
+import Tiles from 'grommet/components/Tiles'
+import Tile from 'grommet/components/Tile'
+import Section from 'grommet/components/Section'
+import SocialShare from 'grommet/components/SocialShare'
+import Video from 'grommet/components/Video'
+import CirclePlayIcon from 'grommet/components/icons/base/CirclePlay'
 
-import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap';
-import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap';
-import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, Checkbox, Radio } from 'react-bootstrap';
-import { Jumbotron } from 'react-bootstrap';
+import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap'
+import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap'
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, Checkbox, Radio } from 'react-bootstrap'
+import { Jumbotron } from 'react-bootstrap'
 
-import CategorySummary from '../components/summary/CategorySummary.jsx'
+import CategorySummary from 'quickcommerce-react/components/summary/CategorySummary.jsx'
 
 export default class CategoryPage extends Component {
     constructor(props) {

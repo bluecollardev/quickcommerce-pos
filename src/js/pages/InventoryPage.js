@@ -3,35 +3,35 @@ import axios from 'axios' // Move me out! Just using in here for temp report pro
 
 import React, { Component } from 'react'
 
-import BlockUi from 'react-block-ui';
-import 'react-block-ui/style.css';
+import BlockUi from 'react-block-ui'
+import 'react-block-ui/style.css'
 
-import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap';
-import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap';
-import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, Checkbox, Radio } from 'react-bootstrap';
+import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap'
+import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap'
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, Checkbox, Radio } from 'react-bootstrap'
 
-import DragDropContainer from '../components/cart/DragDropContainer.jsx'
-import DragDropCartRow from '../components/cart/DragDropCartRow.jsx'
-import CartDropTarget from '../components/cart/CartDropTarget.jsx'
-import CartDragItem from '../components/cart/CartDragItem.jsx'
-import CatalogRow from '../components/catalog/CatalogRow.jsx'
-import ProductOptionRow from '../components/catalog/ProductOptionRow.jsx'
+import DragDropContainer from 'quickcommerce-react/components/cart/DragDropContainer.jsx'
+import DragDropCartRow from 'quickcommerce-react/components/cart/DragDropCartRow.jsx'
+import CartDropTarget from 'quickcommerce-react/components/cart/CartDropTarget.jsx'
+import CartDragItem from 'quickcommerce-react/components/cart/CartDragItem.jsx'
+import CatalogRow from 'quickcommerce-react/components/catalog/CatalogRow.jsx'
+import ProductOptionRow from 'quickcommerce-react/components/catalog/ProductOptionRow.jsx'
 
-import Stepper from '../components/stepper/BrowserStepper.jsx'
-import BrowserActions from '../actions/BrowserActions.jsx'
-import BrowserStore from '../stores/BrowserStore.jsx'
+import Stepper from 'quickcommerce-react/components/stepper/BrowserStepper.jsx'
+import BrowserActions from 'quickcommerce-react/actions/BrowserActions.jsx'
+import BrowserStore from 'quickcommerce-react/stores/BrowserStore.jsx'
 
-import ProductActions from '../actions/ProductActions.jsx'
-import ProductBrowser from '../components/browser/ProductBrowser.jsx'
-import BrowserMenu from '../components/browser/BrowserMenu.jsx'
-import NewAccountForm from '../components/account/NewAccountForm.jsx'
-import EditAccountForm from '../components/account/EditAccountForm.jsx'
-import CustomerProfile from '../components/customer/CustomerProfile.jsx'
+import ProductActions from 'quickcommerce-react/actions/ProductActions.jsx'
+import ProductBrowser from 'quickcommerce-react/components/browser/ProductBrowser.jsx'
+import BrowserMenu from 'quickcommerce-react/components/browser/BrowserMenu.jsx'
+import NewAccountForm from 'quickcommerce-react/components/account/NewAccountForm.jsx'
+import EditAccountForm from 'quickcommerce-react/components/account/EditAccountForm.jsx'
+import CustomerProfile from 'quickcommerce-react/components/customer/CustomerProfile.jsx'
 
-import Cart from '../modules/Cart.jsx'
-import InternalCartStore from '../modules/CartStore.jsx'
+import Cart from 'quickcommerce-react/modules/Cart.jsx'
+import InternalCartStore from 'quickcommerce-react/modules/CartStore.jsx'
 
 // Dirty global hack to maintain store instance until I refactor 
 // this component to use context or switch from flux to redux
@@ -39,17 +39,17 @@ window.CartStore = (typeof window.CartStore === 'undefined') ? InternalCartStore
 
 let CartStore = window.CartStore
 
-import CheckoutStore from '../stores/CheckoutStore.jsx' // Will need for totals and stuff
-import ProductStore from '../stores/ProductStore.jsx' // Will need for totals and stuff
-import SettingStore from '../stores/SettingStore.jsx'
+import CheckoutStore from 'quickcommerce-react/stores/CheckoutStore.jsx' // Will need for totals and stuff
+import ProductStore from 'quickcommerce-react/stores/ProductStore.jsx' // Will need for totals and stuff
+import SettingStore from 'quickcommerce-react/stores/SettingStore.jsx'
 import { bubble as MainMenu, fallDown as CustomerMenu } from 'react-burger-menu'
 
-import Factory from '../factory/Factory.jsx'
+import Factory from 'quickcommerce-react/factory/Factory.jsx'
 
-import StringHelper from '../helpers/String.js'
-import ArrayHelper from '../helpers/Array.js'
-import JSONHelper from '../helpers/JSON.js'
-import UrlHelper from '../helpers/URL.js'
+import StringHelper from 'quickcommerce-react/helpers/String.js'
+import ArrayHelper from 'quickcommerce-react/helpers/Array.js'
+import JSONHelper from 'quickcommerce-react/helpers/JSON.js'
+import UrlHelper from 'quickcommerce-react/helpers/URL.js'
 
 let fluxFactory = new Factory()
 
@@ -57,16 +57,16 @@ let categories = [] // Empty init containers
 let products = [] // Empty init containers
 
 // Pre-configured step types
-import CategoryStep from '../steps/Category.jsx'
-import ProductStep from '../steps/Product.jsx'
-import ProductOptionStep from '../steps/ProductOption.jsx'
+import CategoryStep from 'quickcommerce-react/steps/Category.jsx'
+import ProductStep from 'quickcommerce-react/steps/Product.jsx'
+import ProductOptionStep from 'quickcommerce-react/steps/ProductOption.jsx'
 
 // Higher order component adds Auth functions
-import AuthenticatedComponent from '../components/AuthenticatedComponent.jsx'
-import PurchaserComponent from '../components/PurchaserComponent.jsx'
+import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
+//import PurchaserComponent from '../components/PurchaserComponent.jsx'
 
 // The actual shopping cart component itself (includes embedded ProductBrowser)
-import RetailComponent from '../components/RetailComponent.jsx' // TODO: Might be a good idea later to wrap this
+//import RetailComponent from '../components/RetailComponent.jsx' // TODO: Might be a good idea later to wrap this
 
 export default AuthenticatedComponent(class InventoryPage extends Component {
     constructor(props) {

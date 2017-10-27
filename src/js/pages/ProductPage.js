@@ -1,44 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import StarRating from 'react-star-rating'
 
-import Anchor from 'grommet/components/Anchor';
-import Box from 'grommet/components/Box';
-import Card from 'grommet/components/Card';
-import Chart, { Area, Axis, Base, Layers } from 'grommet/components/chart/Chart';
-import Menu from 'grommet/components/Menu';
-import Footer from 'grommet/components/Footer';
-import FormField from 'grommet/components/FormField';
-import NumberInput from 'grommet/components/NumberInput';
-import Select from 'grommet/components/Select';
-import Heading from 'grommet/components/Heading';
-import Hero from 'grommet/components/Hero';
-import Image from 'grommet/components/Image';
-import Label from 'grommet/components/Label';
-import TableHeader from 'grommet/components/TableHeader';
-import TableRow from 'grommet/components/TableRow';
-import Paragraph from 'grommet/components/Paragraph';
-import Quote from 'grommet/components/Quote';
-import Section from 'grommet/components/Section';
-import SocialShare from 'grommet/components/SocialShare';
-import Video from 'grommet/components/Video';
-import CirclePlayIcon from 'grommet/components/icons/base/CirclePlay';
-//import Header from './Header';
+import Anchor from 'grommet/components/Anchor'
+import Box from 'grommet/components/Box'
+import Card from 'grommet/components/Card'
+import Chart, { Area, Axis, Base, Layers } from 'grommet/components/chart/Chart'
+import Menu from 'grommet/components/Menu'
+import Footer from 'grommet/components/Footer'
+import FormField from 'grommet/components/FormField'
+import NumberInput from 'grommet/components/NumberInput'
+import Select from 'grommet/components/Select'
+import Heading from 'grommet/components/Heading'
+import Hero from 'grommet/components/Hero'
+import Image from 'grommet/components/Image'
+import Label from 'grommet/components/Label'
+import TableHeader from 'grommet/components/TableHeader'
+import TableRow from 'grommet/components/TableRow'
+import Paragraph from 'grommet/components/Paragraph'
+import Quote from 'grommet/components/Quote'
+import Section from 'grommet/components/Section'
+import SocialShare from 'grommet/components/SocialShare'
+import Video from 'grommet/components/Video'
+import CirclePlayIcon from 'grommet/components/icons/base/CirclePlay'
+//import Header from './Header'
 
-import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap';
-import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap';
-import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, Checkbox, Radio, } from 'react-bootstrap';
+import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap'
+import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap'
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, Checkbox, Radio, } from 'react-bootstrap'
 
 import Griddle from 'griddle-react'
 
-import ProductSummary from '../components/summary/ProductSummary.jsx'
+import ProductSummary from 'quickcommerce-react/components/summary/ProductSummary.jsx'
 
-import ProductOptionSlide from '../components/catalog/ProductOptionSlide.jsx'
+import ProductOptionSlide from 'quickcommerce-react/components/catalog/ProductOptionSlide.jsx'
 
-//import ProductActions from '../actions/ProductActions.jsx'
-import ProductStore from '../stores/ProductStore.jsx'
-import InternalCartStore from '../modules/CartStore.jsx'
+//import ProductActions from 'quickcommerce-react/actions/ProductActions.jsx'
+import ProductStore from 'quickcommerce-react/stores/ProductStore.jsx'
+import InternalCartStore from 'quickcommerce-react/modules/CartStore.jsx'
 
 import Parallax from 'react-springy-parallax'
 

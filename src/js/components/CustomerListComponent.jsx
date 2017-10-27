@@ -10,26 +10,26 @@ import { Checkbox, Radio } from 'react-bootstrap'
 import { Jumbotron } from 'react-bootstrap'
 
 // Higher order component adds Auth functions
-import AuthenticatedComponent from './AuthenticatedComponent.jsx'
+import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
 
 //import OmniSearch from './search/OmniSearch.jsx'
-import CustomerPicker from './customer/CustomerPickerAlt.jsx'
-import SignInForm from './account/SignInForm.jsx'
-//import CreditCardForm from './payment/CreditCardForm.jsx'
-import CustomerProfile from './customer/AuthenticatedCustomerFullProfile.jsx'
-import CustomerFilter from './filter/CustomerFilter.jsx'
+import CustomerPicker from 'quickcommerce-react/components/customer/CustomerPickerAlt.jsx'
+import SignInForm from 'quickcommerce-react/components/account/SignInForm.jsx'
+//import CreditCardForm from 'quickcommerce-react/components/payment/CreditCardForm.jsx'
+import CustomerProfile from 'quickcommerce-react/components/customer/AuthenticatedCustomerFullProfile.jsx'
+import CustomerFilter from 'quickcommerce-react/components/filter/CustomerFilter.jsx'
 
-import LoginStore from '../stores/LoginStore.jsx'
-import UserStore from '../stores/UserStore.jsx'
+import LoginStore from 'quickcommerce-react/stores/LoginStore.jsx'
+import UserStore from 'quickcommerce-react/stores/UserStore.jsx'
 
-import CustomerSearchActions from '../actions/CustomerSearchActions.jsx'
-import CustomerSearchStore from '../stores/CustomerSearchStore.jsx'
+import CustomerSearchActions from 'quickcommerce-react/actions/CustomerSearchActions.jsx'
+import CustomerSearchStore from 'quickcommerce-react/stores/CustomerSearchStore.jsx'
 
-import CustomerListActions from '../actions/CustomerListActions.jsx'
-import CustomerListStore from '../stores/CustomerListStore.jsx'
+import CustomerListActions from 'quickcommerce-react/actions/CustomerListActions.jsx'
+import CustomerListStore from 'quickcommerce-react/stores/CustomerListStore.jsx'
 
-import CustomerStore from '../stores/CustomerStore.jsx'
-import CheckoutStore from '../stores/CheckoutStore.jsx'
+import CustomerStore from 'quickcommerce-react/stores/CustomerStore.jsx'
+import CheckoutStore from 'quickcommerce-react/stores/CheckoutStore.jsx'
 
 //import { withStyles } from 'material-ui/styles'
 

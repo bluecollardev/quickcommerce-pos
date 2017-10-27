@@ -1,35 +1,20 @@
-import assign              from 'object-assign'
+import assign from 'object-assign'
 
-import React, { Component } from 'react';
-import Anchor from 'grommet/components/Anchor';
-import Box from 'grommet/components/Box';
+import React, { Component } from 'react'
 
-import Meter from 'grommet/components/Meter';
+import Box from 'grommet/components/Box'
+import Section from 'grommet/components/Section'
 
-import Card from 'grommet/components/Card';
-import Header from 'grommet/components/Header';
-import Footer from 'grommet/components/Footer';
-import Heading from 'grommet/components/Heading';
-import Hero from 'grommet/components/Hero';
-import Paragraph from 'grommet/components/Paragraph';
-import Title from 'grommet/components/Title';
+import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap'
+import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap'
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, Checkbox, Radio } from 'react-bootstrap'
 
-import TableHeader from 'grommet/components/TableHeader';
-import TableRow from 'grommet/components/TableRow';
-import Search from 'grommet/components/Search';
-import Section from 'grommet/components/Section';
-import Menu from 'grommet/components/Menu';
-
-import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap';
-import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap';
-import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, Checkbox, Radio } from 'react-bootstrap';;
-
-import ProductBrowser from '../components/browser/ProductBrowser.jsx'
-import SubscriptionBrowser from '../components/browser/SubscriptionBrowser.jsx'
-import CatalogRow from '../components/catalog/CatalogRow.jsx'
-import SignIn from '../components/account/SignIn.jsx'
+import ProductBrowser from 'quickcommerce-react/components/browser/ProductBrowser.jsx'
+import SubscriptionBrowser from 'quickcommerce-react/components/browser/SubscriptionBrowser.jsx'
+import CatalogRow from 'quickcommerce-react/components/catalog/CatalogRow.jsx'
+import SignIn from 'quickcommerce-react/components/account/SignIn.jsx'
 
 export default class SubscriptionPage extends Component {
     

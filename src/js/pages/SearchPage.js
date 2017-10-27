@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import Anchor from 'grommet/components/Anchor';
-import Box from 'grommet/components/Box';
-import Card from 'grommet/components/Card';
-import Hero from 'grommet/components/Hero';
-import Paragraph from 'grommet/components/Paragraph';
-import Tiles from 'grommet/components/Tiles';
-import Tile from 'grommet/components/Tile';
-import Section from 'grommet/components/Section';
+import React, { Component } from 'react'
 
-import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap';
-import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap';
-import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, Checkbox, Radio, } from 'react-bootstrap';
+import Anchor from 'grommet/components/Anchor'
+import Box from 'grommet/components/Box'
+import Card from 'grommet/components/Card'
+import Hero from 'grommet/components/Hero'
+import Paragraph from 'grommet/components/Paragraph'
+import Tiles from 'grommet/components/Tiles'
+import Tile from 'grommet/components/Tile'
+import Section from 'grommet/components/Section'
 
-//import Header from './Header';
-import NewsFeed from './NewsFeed';
+import { Alert, Table, Grid, Col, Row, Thumbnail, Modal, Accordion, Panel, HelpBlock } from 'react-bootstrap'
+import { Tabs, Tab, TabContent, TabContainer, TabPanes } from 'react-bootstrap'
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, Checkbox, Radio, } from 'react-bootstrap'
+
+//import Header from './Header'
+import NewsFeed from './NewsFeed'
 
 export default class SearchPage extends Component {
   render() {

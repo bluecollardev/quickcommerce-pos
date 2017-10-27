@@ -9,11 +9,12 @@ import { Button, Checkbox, Radio } from 'react-bootstrap'
 import { pushRotate as MainMenu, fallDown as CustomerMenu } from 'react-burger-menu'
 
 // Higher order component adds Auth functions
-import AuthenticatedComponent from '../components/AuthenticatedComponent.jsx'
+import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
+
+import SignInForm from 'quickcommerce-react/components/account/SignInForm.jsx' // TODO: Might be a good idea later to wrap this
 
 // The actual shopping cart component itself (includes embedded ProductBrowser)
 import PosComponent from '../components/PosComponent.jsx' // TODO: Might be a good idea later to wrap this
-import SignInForm from '../components/account/SignInForm.jsx' // TODO: Might be a good idea later to wrap this
 
 export default AuthenticatedComponent(class PosPage extends Component {
     constructor(props) {

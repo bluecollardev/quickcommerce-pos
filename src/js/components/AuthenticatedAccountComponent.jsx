@@ -10,7 +10,8 @@ import { Button, Checkbox, Radio } from 'react-bootstrap'
 import { Jumbotron } from 'react-bootstrap'
 
 // Higher order component adds Auth functions
-import AuthenticatedComponent from './AuthenticatedComponent.jsx'
+import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
+
 import AccountComponent from './AccountComponent.jsx'
 
 export default AuthenticatedComponent(class AuthenticatedAccountComponent extends Component {

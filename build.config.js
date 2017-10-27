@@ -1,11 +1,14 @@
 module.exports = {
 	phonegapServePort: 3131,
 	phonegapDirectory: 'phonegap-app',
-	sourceDirectory: 'quickcommerce/app/src',
+	//sourceDirectory: 'quickcommerce/app/src',
+	sourceDirectory: 'src',
+	//buildDirectory: 'upload/pos',
 	buildDirectory: 'upload/pos',
 	//buildDirectory: 'quickcommerce/app/build',
 	//buildDirectory: 'upload/catalog/view/javascript/quickcommerce',
-	libDirectory: 'quickcommerce/app/lib',
+	//libDirectory: 'quickcommerce/app/lib',
+	libDirectory: 'lib',
 	themeSourceDirectory: 'quickcommerce/theme/src',
 	themeBuildDirectory: 'upload/catalog/view/theme/quickcommerce',
     // TODO: Support for specific themes only

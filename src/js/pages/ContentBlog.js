@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import Anchor from 'grommet/components/Anchor';
-import Box from 'grommet/components/Box';
-import Button from 'grommet/components/Button';
-import Card from 'grommet/components/Card';
-import Chart, { Area, Axis, Base, Layers } from 'grommet/components/chart/Chart';
-import Footer from 'grommet/components/Footer';
-import FormField from 'grommet/components/FormField';
-import Heading from 'grommet/components/Heading';
-import Hero from 'grommet/components/Hero';
-import Image from 'grommet/components/Image';
-import Label from 'grommet/components/Label';
-import Paragraph from 'grommet/components/Paragraph';
-import Quote from 'grommet/components/Quote';
-import Section from 'grommet/components/Section';
-import SocialShare from 'grommet/components/SocialShare';
-import Video from 'grommet/components/Video';
-import CirclePlayIcon from 'grommet/components/icons/base/CirclePlay';
+import React, { Component } from 'react'
+import Anchor from 'grommet/components/Anchor'
+import Box from 'grommet/components/Box'
+import Button from 'grommet/components/Button'
+import Card from 'grommet/components/Card'
+import Chart, { Area, Axis, Base, Layers } from 'grommet/components/chart/Chart'
+import Footer from 'grommet/components/Footer'
+import FormField from 'grommet/components/FormField'
+import Heading from 'grommet/components/Heading'
+import Hero from 'grommet/components/Hero'
+import Image from 'grommet/components/Image'
+import Label from 'grommet/components/Label'
+import Paragraph from 'grommet/components/Paragraph'
+import Quote from 'grommet/components/Quote'
+import Section from 'grommet/components/Section'
+import SocialShare from 'grommet/components/SocialShare'
+import Video from 'grommet/components/Video'
+import CirclePlayIcon from 'grommet/components/icons/base/CirclePlay'
 
 export default class ContentBlog extends Component {
   render() {

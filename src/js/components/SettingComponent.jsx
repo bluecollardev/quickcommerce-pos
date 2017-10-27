@@ -11,16 +11,16 @@ import { Button, Checkbox, Radio } from 'react-bootstrap'
 import Autocomplete from 'react-autocomplete'
 
 // Higher order component adds Auth functions
-import AuthenticatedComponent from './AuthenticatedComponent.jsx'
-import FormComponent from './FormComponent.jsx'
+import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
+import FormComponent from 'quickcommerce-react/components/FormComponent.jsx'
 
-import CurrentAddress from './address/CurrentAddress.jsx'
+import CurrentAddress from 'quickcommerce-react/components/address/CurrentAddress.jsx'
 
-import SettingActions from '../actions/SettingActions.jsx'
-import SettingStore from '../stores/SettingStore.jsx'
+import SettingActions from 'quickcommerce-react/actions/SettingActions.jsx'
+import SettingStore from 'quickcommerce-react/stores/SettingStore.jsx'
 
-import CustomerListActions from '../actions/CustomerListActions.jsx'
-import CustomerListStore from '../stores/CustomerListStore.jsx'
+import CustomerListActions from 'quickcommerce-react/actions/CustomerListActions.jsx'
+import CustomerListStore from 'quickcommerce-react/stores/CustomerListStore.jsx'
 
 export default FormComponent(class SettingComponent extends Component {
 	static defaultProps = {

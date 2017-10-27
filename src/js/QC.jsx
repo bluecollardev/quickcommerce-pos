@@ -14,10 +14,10 @@ import { Button, Checkbox, Radio } from 'react-bootstrap'
 
 import { bubble as MainMenu, fallDown as CustomerMenu } from 'react-burger-menu'
 
-import AuthenticatedApp from './components/AuthenticatedApp.jsx'
+import AuthenticatedApp from 'quickcommerce-react/components/AuthenticatedApp.jsx'
 
-import TopMenu from './components/menu/TopMenu.jsx'
-import AccountMenu from './components/menu/AccountMenu.jsx'
+import TopMenu from 'quickcommerce-react/components/menu/TopMenu.jsx'
+import AccountMenu from 'quickcommerce-react/components/menu/AccountMenu.jsx'
 
 import PosPage from './pages/PosPage'
 import SettingPage from './pages/SettingPage'
@@ -29,11 +29,11 @@ import CheckoutPage from './pages/CheckoutPage'
 import ContentBlog from './pages/ContentBlog'
 import ContentArticle from './pages/ContentArticle'
 
-import LoginActions from './actions/LoginActions.jsx'
-import UserActions from './actions/UserActions.jsx'
+import LoginActions from 'quickcommerce-react/actions/LoginActions.jsx'
+import UserActions from 'quickcommerce-react/actions/UserActions.jsx'
 
-import Auth from './services/AuthService.jsx'
-import CustomerService from './services/CustomerService.jsx'
+import Auth from 'quickcommerce-react/services/AuthService.jsx'
+import CustomerService from 'quickcommerce-react/services/CustomerService.jsx'
 
 console.log('QC API endpoint: ' + QC_API)
 
@@ -179,23 +179,6 @@ class QC extends AuthenticatedApp {
             </AuthenticatedApp>
         )
     }
-}
-
-QC.defaultProps = {
-    // Customize config settings
-    baseUrl: '', //App.getRootWebsitePath(true),
-    //serviceUrl: 'http://sd-otb.vest.technology/',
-    serviceUrl: QC_BASE_URI,
-    //serviceUrl: 'http://php5519.deathstar/quickcommerce/',
-    //systemUrl: baseUrl + 'vendor/kpaged/core/', // Don't forget the trailing slash!
-    //libUrl: baseUrl + 'vendor/kpaged/lib/', // Don't forget the trailing slash!
-    //appUrl: baseUrl + 'app/',
-    //templateUrl: appUrl + 'templates/',
-    //moduleUrl: appUrl + 'modules/',
-    //blockUrl: appUrl + 'vendor/kpaged/blocks/',
-    debug: false, // Enable debugging
-    customer: null, //{ blocks: false, modules: false, pages: true }; // Enable profiling
-    profile: false //{ blocks: false, modules: false, pages: true }; // Enable profiling
 }
 
 module.exports = DragDropContext(HTML5Backend)(QC)
