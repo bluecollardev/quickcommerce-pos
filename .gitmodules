@@ -1,0 +1,3 @@
+[submodule "lib/quickcommerce-react"]
+	path = lib/quickcommerce-react
+	url = https://github.com/firebrandsolutions/quickcommerce-react.git

@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+    
+    <!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />-->
+
+    <link href='spa/js/src/grommet.min.css' rel='stylesheet' type='text/css'>
+    <!--<link href="spa/imported/fonts.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="spa/imported/owl.css" media="screen, projection" rel="stylesheet" type="text/css">-->
+    
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">-->
+    <link href="spa/lib/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet"  type="text/css">
+    
+    <link rel="stylesheet" type="text/css" href="css/bundle.css" />
+    <title></title>
+    
+    <style>
+    /* Body & HTML scrolling */
+    html {
+        overflow-x: hidden;
+        font-size: 100%;
+    }
+    
+    html, body {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    
+    body, h5 {
+        font-size: 0.888rem;
+    }
+    
+    .form-control {
+        font-size: 1.0rem;
+    }
+    
+    /* Kill grommet styles */
+    .grommet p:not(.grommetux-paragraph) {
+        margin-top: auto;
+    }
+    
+    /* Hide tabs, trigger programatically */
+    /*#dev-tabs ul {
+        display: none;
+    }*/
+    
+    .browser-menu-container {
+        padding-top: 0;
+    }
+    
+    .browser-content .card {
+        text-align: center;
+    }
+    
+    .checkbox-inline+.checkbox-inline, 
+    .radio-inline+.radio-inline {
+        margin-left: 0; /* Margin only! */
+    }
+    
+    .grommet h1:not(.grommetux-heading), .grommet h2:not(.grommetux-heading), .grommet h3:not(.grommetux-heading), 
+    .grommet h4:not(.grommetux-heading), .grommet h5:not(.grommetux-heading), .grommet h6:not(.grommetux-heading) {
+        color: #333;
+    }
+    
+    .btn-danger:not(.grommetux-button) {
+        background-color: #A91626 !important;
+        color: white !important;
+    }
+    
+    .btn-danger:not(.grommetux-button) .fa,
+    .btn-danger:not(.grommetux-button) h1,
+    .btn-danger:not(.grommetux-button) h2,
+    .btn-danger:not(.grommetux-button) h3,
+    .btn-danger:not(.grommetux-button) h4,
+    .btn-danger:not(.grommetux-button) h5,
+    .btn-danger:not(.grommetux-button) h6 {
+        color: white !important;
+    } 
+
+    .btn-success:not(.grommetux-button) {
+        background-color: #13432D !important;
+        color: white !important;
+    }
+    
+    .btn-success:not(.grommetux-button) .fa,
+    .btn-success:not(.grommetux-button) h1,
+    .btn-success:not(.grommetux-button) h2,
+    .btn-success:not(.grommetux-button) h3,
+    .btn-success:not(.grommetux-button) h4,
+    .btn-success:not(.grommetux-button) h5,
+    .btn-success:not(.grommetux-button) h6 {
+        color: white !important;
+    } 
+    
+    #page-wrap + div header {
+        position: absolute;
+        top: -80px;
+    }
+    
+    .bm-menu {
+        box-sizing: content-box;
+        overflow-x: hidden !important;
+    }
+    
+    .modal-backdrop {
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.333);
+        z-index: 10;
+    }
+    
+    /* Position and sizing of burger button */
+    .bm-burger-button {
+      position: fixed;
+      width: 36px;
+      height: 30px;
+      left: 36px;
+      top: 26px;
+    }
+
+    /* Color/shape of burger icon bars */
+    .bm-burger-bars {
+      background: #373a47;
+    }
+
+    /* Position and sizing of clickable cross button */
+    .bm-cross-button {
+      height: 24px;
+      width: 24px;
+    }
+
+    /* Color/shape of close button cross */
+    .bm-cross {
+      background: #bdc3c7;
+    }
+
+    /* General sidebar styles */
+    .bm-menu {
+      background: white;
+      padding: 7.5em 1.5em 0;
+      font-size: 1.15em;
+    }
+
+    /* Morph shape necessary with bubble or elastic */
+    .bm-morph-shape {
+      fill: #373a47;
+    }
+
+    /* Wrapper for item list */
+    .bm-item-list {
+      color: #b8b7ad;
+      padding: 0.8em;
+    }
+
+    /* Styling of overlay */
+    .bm-overlay {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .react-app-wrapper, .cart-ui {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+    
+    #browser {
+        width: 60%;
+        height: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        overflow-y: scroll; 
+        overflow-x: hidden; 
+        padding-bottom: 5rem;
+    }
+    
+    #checkout {
+        width: 40%;
+        height: 100%;
+        z-index: 10;
+        background: #fff;
+        position: fixed;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding-bottom: 2rem;
+        bottom: 0;
+        right: 0;
+    }
+    
+    #dev-tabs {
+        width: 100%;
+    }
+    
+    #checkout-notes {
+        width: 30%;
+        position: fixed;
+        bottom: 0;
+        background: #fff;
+        background: #f4f4f4;
+        border-top: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+    
+    .checkout-parts {
+       display: flex;
+       flex-direction: column;
+    }
+    
+    #outer-container {
+        perspective: none !important; /* It's killing the height */ 
+    }
+    
+    .checkout-parts button,
+    .checkout-parts button h4 {
+        color: black !important;
+    }
+    
+    /* Fix now that we rearranged cart layout */
+    .checkout-parts button {
+        display: block;
+        float: right !important;
+    }
+    
+    .cart-ui .container {
+        width: 100%; /* Force fluid */
+    }
+    
+    .total {
+        font-size: 2.3rem !important;
+    }
+    
+    /* 384px is set as a max-width somewhere, Grommet is usually the culprit */
+    .cart-buttons button {
+        max-width: none !important;
+    }
+    
+    .order-parts-header,
+    .account-parts,
+    .checkout-parts {
+        /*margin-top: 60px;*/
+        margin-top: 10px;
+    }
+    
+    .dnd-target-wrapper {
+        margin-top: 1.5rem;
+    }
+    
+    .pagination-sm > li > a, 
+    .pagination-sm > li > span {
+        padding: 1.5rem 2rem;
+    }
+    
+    .card h5 {
+        font-weight: bold !important;
+    }
+    
+    a {
+        color: #A91626 !important;
+    }
+    
+    .grommetux-meter--bar .grommetux-meter__values .grommetux-meter__slice.grommetux-color-index-graph-1, .grommetux-meter--bar .grommetux-meter__values .grommetux-meter__slice.grommetux-color-index-graph-5 {
+        stroke: #A91626;
+    }
+    
+    /* Not clearing for some reason */
+    .griddle-footer {
+        clear: both;
+    }
+    
+    .pagination > .active > a, 
+    .pagination > .active > a:focus, 
+    .pagination > .active > a:hover, 
+    .pagination > .active > span, 
+    .pagination > .active > span:focus, 
+    .pagination > .active > span:hover {
+        border-color: #A91626;
+        background-color: #A91626;
+        color: white !important;
+    }
+    
+    .bm-item-list a {
+        padding: 0.8em;
+        color: #333;
+    }
+    
+    /* Temporarily override Grommet title color too, we should eventually set up the SASS files */
+    .grommetux-title, label.control-label {
+        color: #333 !important;
+    }
+    
+    
+    .bm-item-list a span {
+        margin-left: 10px;
+        font-weight: 700;
+    }
+    
+    #page-wrap + div > .bm-burger-button {
+        right: 30px;
+        left: auto;
+    }
+    
+    #page-wrap + div > .bm-menu-wrap,
+    #page-wrap + div > .bm-overlay {
+        top: 0;
+    }
+    
+    #page-wrap + div > .bm-menu {
+        padding: 2.5em 1.5em 0;
+    }
+    
+    #page-wrap + div >  .bm-burger-button .bm-icon:before {
+       font-family: FontAwesome;
+       content: '\f007';
+       font-size: 3rem;
+       width: 3rem;
+       height: 3rem;
+       z-index: 9999;
+       font-style: normal;
+    }
+    
+    /*#page-wrap + div > .bm-overlay {
+        display: none;
+    }*/
+    
+    .bm-burger-button {
+        z-index: 5555 !important;
+    }
+    
+    .bm-cross-button {
+        display: none;
+    }
+    
+    .dnd-target-wrapper .fa {
+        color: #333;
+    }
+    
+    @media screen and (max-width: 767px) {
+        .cart-ui {
+            flex-flow: column wrap;
+        }
+        
+        .thumbnail {
+            width: 50px !important;
+        }
+        
+        .card {
+            display: flex;
+        }
+        
+        .card h5, .cart p {
+            margin: 0 !important;
+            padding: 0 !important;
+            /* Handle with flex */
+        }
+        
+        .card h5 {
+            flex: 1;
+        }
+        
+        .card p {
+            flex: 2;
+        }
+        
+        /* Fix now that we rearranged cart layout */
+        .checkout-parts button {
+            display: block;
+            float: none !important;
+        }
+        
+        .griddle-container {
+            min-height: 100px;
+            display: flex;
+        }
+        
+        .order-parts-header,
+        .account-parts,
+        .checkout-parts {
+            margin-top: 20px;
+        }
+    }
+    
+    @media screen and (max-device-width: 1024px) and (orientation: landscape) {
+        .griddle-container div[class^="col-"] {
+            height: 230px;
+        }
+    }
+    
+    .multi-filter-panel .dropdown > .dropdown-toggle, 
+    .multi-filter-panel > li {
+        font-size: 0.777rem;
+    }
+
+    .multi-filter-panel > li {
+        padding: 0;
+    }
+
+    .multi-filter-panel > li > a {
+        padding: 2rem 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .multi-filter-panel .dropdown > .dropdown-menu {
+        min-width: 250px;
+    }
+    
+    .navbar-default {
+        border-width: 1px 0 0 0; /* Kill borders */
+    }
+    
+    .category-filter-bar .navbar {
+        border-width: 0 0 1px 0;
+    }
+    
+    .category-filter-bar .multi-filter-panel > li {
+        border: 0;
+    }
+    
+    .browser-container {
+        border-right: 1px solid #ededed;
+    }
+    
+    .browser-menu-container {
+        padding-bottom: 10px;
+    }
+    
+    .order-parts,
+    .order-parts h1,
+    .order-parts h2,
+    .order-parts h3,
+    .order-parts h4,
+    .order-parts h5,
+    .order-parts h6,
+    .order-parts .grommetux-title {
+        color: white !important;
+    }
+    
+    .order-parts {
+        width: 100%;
+    }
+    
+    .order-parts > div {
+        position: fixed;
+        width: inherit;
+        min-height: 80px;
+        color: white !important;
+        background: black;
+        padding-left: 2rem;
+        z-index: 9999;
+    }
+    
+    .order-parts {
+        min-height: 80px;
+    }
+    
+    /* Override previous black color */
+    .bm-burger-bars {
+        background: white;
+    }
+    
+    .navbar-default {
+        background-color: white;
+    }
+    
+    .navbar {
+        margin-bottom: 0; /* Override bundle style */
+    }
+    
+    .category-filter-bar .navbar {
+        margin-bottom: 20px;
+    }
+    
+    .browser-content .card {
+        cursor: pointer;
+    }
+    
+    #dev-tabs > ul[role=tablist] {
+        display: none;
+    }
+    
+    /* Override step colors */
+    .StepIndicator {
+        margin-top: 10px;
+    }
+    
+    .StepIndicator .StepIndicator__step.is-active .StepIndicator__info {
+        /*border-color: #A91626;*/
+        background-color: #A91626;
+        border: 1px solid grey !important;
+    }
+    
+    .StepIndicator .StepIndicator__step.is-active .StepIndicator__label {
+        color: inherit;
+    }
+    
+    .StepIndicator__info {
+        width: 3.5rem;
+        height: 3.5rem;
+        line-height: 3.5rem;
+    }
+    
+    .StepIndicator__label {
+        font-size: 0.777rem !important;
+    }
+    
+    .card .item-price, 
+    .card .item-name {
+        margin-bottom: 6px !important;
+    }
+    
+    .card .item-name {
+        font-weight: bold !important;
+    }
+    
+    .card h5.item-brand {
+        font-weight: normal !important;
+    }
+    
+    /* POS specific styles */
+    
+    @media only screen and (min-width: 960px) {
+        .hide-desktop {
+            display: none !important
+        }
+    }
+    
+    /* Override form fields */
+    .form-control {
+        font-size: 1.0rem !important;
+    }
+    
+    /* Autocomplete dropdown */
+    .autocomplete-control-group .form-control + div {
+        position: absolute !important; /* Stupid component uses a fixed position dropdown, wow that's stupid */
+        font-size: 1.15rem !important;
+        /* Kill any positioning */
+        left: auto !important;
+        bottom: auto !important;
+        top: auto !important;
+        z-index: 999 !important;
+        border-radius: 0;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.9);
+        height: auto !important;
+        max-height: 240px !important;
+    }
+
+    /* Autocomplete dropdown item */
+    .autocomplete-control-group .form-control + div > div {   
+        padding: 0.5rem 0.75rem;
+        font-size: 100%;
+    }
+    
+    .account-welcome {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .actionButtons {
+        height: 250px;
+    }
+
+    .actionButtons li {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .actionButtons .btn.no-bs-style {
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        border: none !important;
+        margin-top: 0;
+        margin-bottom: 0;
+        left: 0;
+    }
+
+    .actionButtons .btn.no-bs-style .buttonText {
+        color: #2B2B2B;
+        display: block;
+        margin-bottom: 1.5rem;
+    }
+
+    .actionButtons li a.btn:hover,
+    .actionButtons li a.btn:active {
+        background: #85312C;
+        /* ACE Red */
+    }
+
+    .actionButtons li a.btn:focus {
+        background: #85312C;
+        /* ACE Red */
+    }
+
+    .actionButtons li a.btn:hover .buttonText,
+    .actionButtons li a.btn:active .buttonText,
+    .actionButtons li a.btn:focus .buttonText,
+    .actionButtons li a.btn:hover i,
+    .actionButtons li a.btn:active i,
+    .actionButtons li a.btn:focus i {
+        color: #fff;
+    }
+
+    .actionButtons i.fa {
+        font-size: 1.3rem;
+        /*line-height: 2.3rem;*/
+    }
+        
+    .expandoMenu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .userMenu .actionButtons {
+        height: auto;
+        display: inline-block;
+    }
+
+    .userMenu .actionButtons > ul {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .userMenu ul,
+    .userMenu ul li {
+        list-style: none;
+        list-style-type: none;
+    }
+
+    /* Stretch menu */
+    .userMenu {
+        z-index: 5555;
+        flex-wrap: wrap;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*position: fixed;*/
+        width: 100%;
+        height: 62px;
+        left: 0;
+        top: 0;		
+    }
+    
+    .userMenu {
+        display: flex;
+        flex-wrap: nowrap;
+        /*display: inline-block;*/
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .userMenu .actionButtons > ul > li {
+        width: auto;
+    }
+
+    .userMenu .actionButtons > ul > li a {
+        padding: 0;
+    }
+
+    /* Temp - use SASS vars */
+    .actionButtons li a.btn:hover, 
+    .actionButtons li a.btn:active,
+    .actionButtons li a.btn:focus {
+        color: #A91626;
+        background: transparent;
+    }
+    
+    .actionButtons li a.btn.standard-item {
+        background: #4D4D4D;
+    }
+    
+    .actionButtons li a.btn:hover i.fa, 
+    .actionButtons li a.btn:active i.fa,
+    .actionButtons li a.btn:focus i.fa {
+        color: #222;
+    }
+
+    .actionButtons li i.fa {
+        font-size: 1.5rem;
+        margin: 0 auto;
+        padding: 19px 0;
+    }
+    
+    .userMenu .actionButtons {
+        height: auto;
+    }
+    
+
+    .userMenu .actionButtons > ul {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+
+    .userMenu .actionButtons > ul > li {
+        width: 5.5em;
+    }
+
+    .userMenu .actionButtons .btn.no-bs-style .buttonText {
+        display: inline-block;
+        position: relative;
+        margin-left: 1rem;
+        top: -0.25rem;
+    }
+
+    .userMenu .actionButtons > ul > li br {
+        display: none;
+    }
+
+    @media all and (min-width: 64em) {  
+        .userMenu .actionButtons .btn.no-bs-style .buttonText {
+            display: block;
+        }
+        
+        .userMenu .actionButtons > ul > li br {
+            display: block;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .modal-dialog {
+            width: 600px;
+            margin: 120px auto;
+        }
+    }
+    
+    .keypad .grommetux-number-input {
+        justify-content: center;
+    }
+    
+    .browser-content .form-group,
+    .keypad .form-group {
+        text-align: center;
+    }
+
+    .keypad .numpad {
+      width: 100%;
+      height: 316px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+      border: 1px solid #E3E8EC;
+    }
+
+    .keypad-button {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+        -ms-flex-align: center;
+          align-items: center;
+      -webkit-box-pack: center;
+        -ms-flex-pack: center;
+          justify-content: center;
+      -webkit-box-flex: 1;
+          -ms-flex: 1 0 33.3333%;
+          flex: 1 0 33.3333%;
+      background-color: #F5F5F5;
+      color: #424242;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-weight: bold;
+    }
+    .keypad-button:nth-of-type(10) {
+      -ms-flex-preferred-size: 66.6667%;
+          flex-basis: 66.6667%;
+    }
+    .keypad-button:hover {
+      background-color: #A91626;
+      color: white;
+    }
+    
+    .browser-container .browser-product-title {
+        text-align: center;
+    }
+    
+    .well, .well-xs, .well-sm, .well-md, .well-lg {
+        border-radius: 0 !important;
+    }
+    
+    .StepIndicator__info {
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+    }
+    
+    .product-details h1,
+    .product-details h2,
+    .product-details h3,
+    .product-details h4,
+    .product-details .control-label {
+        text-align: center;
+        display: block;
+    }
+    
+    .browser-container {
+        border-right: none;
+    }
+    
+    /*@media all and (min-width: 1024px) {
+        .checkout {
+            z-index: 999 !important;
+            background: rgb(255, 255, 255);
+            position: fixed !important;
+            bottom: 0px;
+            left: auto !important;
+            right: 0px;
+            top: 0px;
+            width: 33% !important;
+            padding-bottom: 2em;
+            overflow-x: hidden;
+            overflow-y: scroll !important;
+            height: 100% !important;
+        }
+        
+        #dev-tabs {
+            flex: none;
+            width: 66%;
+        }
+    }*/
+    
+    .address-edit-modal .modal-backdrop {
+        z-index: 1040; /* Exact value, 1039 and 1041 won't work as expected */
+    }
+    
+    .setting-modal.in {
+        visibility: visible;
+    }
+    
+    .setting-modal.out {
+        visibility: hidden;
+    }
+    
+    /* Temp grommet box sizes (we're making some Grommet-style components) */
+    .grommetux-box--pad-vertical-small {
+        padding-top: 0.333rem;
+        padding-bottom: 0.333rem;
+    }
+    
+    .grommetux-box--pad-top-small {
+        padding-top: 0.333rem;
+    }
+    
+    /* Fix number input */
+    .grommetux-number-input {
+        flex-flow: row wrap;
+        
+    }
+    
+    .grommetux-number-input .grommetux-number-input__input {
+        flex: 1 1 60%;
+        width: 60%;
+    }
+    
+    .grommetux-number-input__add,
+    .grommetux-number-input__subtract {
+        flex: 1 1 20%;
+        width: 20%;
+    }
+    
+    .griddle .griddle-container > div > div {
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+    }
+    
+    .table.cart .thumbnail {
+        max-width: 80px;
+        max-height: 80px;
+        margin-right: 1rem;
+    }
+    
+    table.cart {
+        margin-bottom: 0;
+    }
+    
+    table.cart thead th:first-child {
+        text-align: center;
+    }
+    
+    .cart-product-col {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .cart-product-delete {
+        max-width: 30px;
+        flex: 1 1 12.5%;
+    }
+    
+    .browser-content .card {
+        padding: 0.5rem;
+    }
+    
+    .cart-product-name {
+        flex: 2 2 50%;
+        padding-left: 1rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cart-product-detail {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: stretch;
+        align-items: flex-start;
+        width: 100%;
+        flex: 0 0 100%;
+    }
+    
+    .cart-product-detail ul {
+        list-style: square;
+    }
+    
+    .product-option-grid > .griddle .griddle-container > div > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .card .item-price, .card .item-name {
+        margin-top: 1rem;
+        margin-bottom: 6px !important;
+    }
+    
+    .product-options-card > .item-name {
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .product-options-card:first-child > .item-name {
+        margin-top: 0 !important;
+    }
+    
+    .product-option-grid .griddle-container .row,
+    .product-option-grid .griddle-container .row > div[class^="col-"] {
+        width: 100%;
+    }
+    
+    .customer-picker .autocomplete-control-group {
+        margin-bottom: 0;
+    }
+    
+    .customer-picker .col-md-6.form-group {
+        margin-bottom: 0;
+    }
+    
+    .card.is-selected .thumbnail {
+        border-color: #85312C;
+    }
+    
+    .card.is-selected .item-name {
+        color: #85312C;
+    }
+    
+    /* TODO: Where is 844 from? */
+    @media screen and (max-width: 768px) {
+        .griddle-container .card h5.item-brand {
+            display: none;
+        }
+    }
+    
+    @media screen and (max-width: 767px) {
+        .product-options-card {
+            flex-direction: column;            
+        }
+        
+        .product-option-grid,
+        .product-option-grid .griddle-container > div,
+        .product-option-grid .griddle-container > div > div {
+            width: 100%;
+        }
+        
+        .product-option-grid > .griddle .griddle-container > div > div {
+            flex-direction: row;
+        }
+    }
+    
+    /* TODO: Where is 844 from? */
+    @media screen and (max-width: 844px) {
+        .griddle-container .card h5.item-brand {
+            display: none;
+        }
+    }
+    
+    @media screen and (max-width: 979px) {
+        .card .thumbnail {
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+    }
+    
+    /* Dammit, I really need to switch this over to some sort of flexbox thing */
+    @media screen and (min-width: 768px) {
+        .griddle-container div[class^="col-"] {
+            height: auto;
+            min-height: 80px;
+            overflow: hidden;
+        }
+    }
+    
+    /* Dammit, I really need to switch this over to some sort of flexbox thing */
+    @media screen and (min-width: 1440px) {
+        .griddle-container div[class^="col-"] {
+            height: 340px;
+        }
+    }
+    
+    @media screen 
+        and (max-width: 1024px) 
+        and (orientation: landscape) {
+        .griddle-container div[class^="col-"] {
+            height: auto;
+            min-height: 80px;
+            overflow: hidden;
+        }
+    }
+    
+    @media screen 
+        and (max-width: 1024px) {
+        /* Pseudo Bootstrap row */
+        .griddle-container > div > div {
+            margin-left: -15px !important;
+            margin-right: -15px !important;
+        }
+        
+        .product-option-grid .griddle-container > div > div {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: stretch;
+        }
+        
+        .product-option-grid .griddle-container .card {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .product-option-grid .griddle-container .card .thumbnail {
+            width: 25%;
+            flex: 1 2 25%;
+        }
+        
+        .product-option-grid .griddle-container .card .item-name {
+            width: 75%;
+            flex: 2 1 75%;
+        }
+    }
+    
+    /* Override media queries */
+    .griddle .top-section, .griddle .griddle-footer {
+        margin-left: 1.5rem !important;
+        margin-right: 1.5rem !important;
+    }
+    </style>
+    
+    <script type="text/javascript">
+    window.prompt = function () {}
+    </script>
+</head>
+<body class="page">
+    <div id="main"></div>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="js/react-bundle.js"></script>
+    <!--<script type="text/javascript" src="js/bower-bundle.js"></script>-->
+    <script type="text/javascript" src="js/pos-bundle.js"></script>
+</body>
+</html>

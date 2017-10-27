@@ -1,0 +1,8 @@
+.idea
+!bower_components
+config
+node_modules
+phonegap-app
+upload
+vendor
+quickcommerce
