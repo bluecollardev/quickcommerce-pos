@@ -15,6 +15,10 @@ export default class ReceiptModal extends Component {
         
         this.showReceiptModal = this.showReceiptModal.bind(this)
         this.hideReceiptModal = this.hideReceiptModal.bind(this)
+        
+        this.state = {
+            receipt: null
+        }
     }
     
     showReceiptModal() {

@@ -15,6 +15,10 @@ export default class ScanModal extends Component {
         
         this.showScanModal = this.showScanModal.bind(this)
         this.hideScanModal = this.hideScanModal.bind(this)
+        
+        this.state = {
+            scan: null
+        }
     }
     
     showScanModal() {

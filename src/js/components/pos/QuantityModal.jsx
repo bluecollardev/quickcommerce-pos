@@ -9,12 +9,26 @@ import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { Button, Checkbox, Radio } from 'react-bootstrap'
 
+import Keypad from 'quickcommerce-react/components/common/Keypad.jsx'
+
 export default class QuantityModal extends Component {
 	constructor(props) {
         super(props)
         
         this.showQuantityModal = this.showQuantityModal.bind(this)
         this.hideQuantityModal = this.hideQuantityModal.bind(this)
+        
+        this.state = {
+            chooseQuantity: null
+        }
+    }
+    
+    showQuantityModal() {
+        this.setState({ chooseQuantity: 1 })
+    }
+    
+    hideQuantityModal() {
+        this.setState({ chooseQuantity: null })
     }
     
     render() {

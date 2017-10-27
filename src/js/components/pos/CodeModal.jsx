@@ -15,6 +15,10 @@ export default class CodeModal extends Component {
         
         this.showCodeModal = this.showCodeModal.bind(this)
         this.hideCodeModal = this.hideCodeModal.bind(this)
+        
+        this.state = {
+            scan: null
+        }
     }
     
     showCodeModal() {

@@ -9,12 +9,51 @@ import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { Button, Checkbox, Radio } from 'react-bootstrap'
 
+const CURRENCY = [
+    { name: 'ONE HUNDRED', value: 100.00},
+    { name: 'TWENTY', value: 20.00},
+    { name: 'TEN', value: 10.00},
+    { name: 'FIVE', value: 5.00},
+    { name: 'ONE', value: 1.00},
+    { name: 'QUARTER', value: 0.25},
+    { name: 'DIME', value: 0.10},
+    { name: 'NICKEL', value: 0.05},
+    { name: 'PENNY', value: 0.01}
+]
+
+const CASH_IN_DRAWER = [
+    ['PENNY', 1.01],
+    ['NICKEL', 2.05],
+    ['DIME', 3.10],
+    ['QUARTER', 4.25],
+    ['ONE', 90.00],
+    ['FIVE', 55.00],
+    ['TEN', 20.00],
+    ['TWENTY', 60.00],
+    ['ONE HUNDRED', 100.00]
+]
+
 export default class CompleteModal extends Component {
 	constructor(props) {
         super(props)
         
         this.showCompleteModal = this.showCompleteModal.bind(this)
         this.hideCompleteModal = this.hideCompleteModal.bind(this)
+        
+        this.state = {
+            complete: null,
+            checkout: {
+                system: {
+                    currency: CURRENCY,
+                    drawer: CASH_IN_DRAWER
+                },
+                store: SettingStore.getStoreData(),
+                order: CheckoutStore.getOrderDetails(),
+                items: CartStore.selection, // Should already be available via getOrderDetails? Just a thought....
+                totals: CheckoutStore.getTotals(),
+                total: CheckoutStore.getTotal()
+            }
+        }
     }
     
     showCompleteModal() {

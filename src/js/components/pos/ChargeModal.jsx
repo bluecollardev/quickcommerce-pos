@@ -9,12 +9,55 @@ import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { Button, Checkbox, Radio } from 'react-bootstrap'
 
+const CURRENCY = [
+    { name: 'ONE HUNDRED', value: 100.00},
+    { name: 'TWENTY', value: 20.00},
+    { name: 'TEN', value: 10.00},
+    { name: 'FIVE', value: 5.00},
+    { name: 'ONE', value: 1.00},
+    { name: 'QUARTER', value: 0.25},
+    { name: 'DIME', value: 0.10},
+    { name: 'NICKEL', value: 0.05},
+    { name: 'PENNY', value: 0.01}
+]
+
+const CASH_IN_DRAWER = [
+    ['PENNY', 1.01],
+    ['NICKEL', 2.05],
+    ['DIME', 3.10],
+    ['QUARTER', 4.25],
+    ['ONE', 90.00],
+    ['FIVE', 55.00],
+    ['TEN', 20.00],
+    ['TWENTY', 60.00],
+    ['ONE HUNDRED', 100.00]
+]
+
 export default class ChargeModal extends Component {
 	constructor(props) {
         super(props)
         
         this.showChargeModal = this.showChargeModal.bind(this)
         this.hideChargeModal = this.hideChargeModal.bind(this)
+        this.renderCashOptions = this.renderCashOptions.bind(this)
+        this.renderPaymentOptions = this.renderPaymentOptions.bind(this)
+        this.selectPaymentMethod = this.selectPaymentMethod.bind(this)
+        this.selectChangePreset = this.selectChangePreset.bind(this)
+        
+        this.state = { 
+            charge: null,
+            checkout: {
+                system: {
+                    currency: CURRENCY,
+                    drawer: CASH_IN_DRAWER
+                },
+                store: SettingStore.getStoreData(),
+                order: CheckoutStore.getOrderDetails(),
+                items: CartStore.selection, // Should already be available via getOrderDetails? Just a thought....
+                totals: CheckoutStore.getTotals(),
+                total: CheckoutStore.getTotal()
+            }
+        }
     }
     
     showChargeModal() {
@@ -38,6 +81,90 @@ export default class ChargeModal extends Component {
         this.setState({ charge: null })
     }
     
+    renderPaymentOptions() {
+        return (
+            <div className='cash-options payment-options'>
+                <Button bsStyle='default' data-type='cash' onClick={this.selectPaymentMethod.bind(this, 'cash')}>Cash</Button>&nbsp;
+                <Button bsStyle='default' data-type='visa' onClick={this.selectPaymentMethod.bind(this, 'credit')}>Visa</Button>&nbsp;
+                <Button bsStyle='default' data-type='mastercard' onClick={this.selectPaymentMethod.bind(this, 'credit')}>Mastercard</Button>&nbsp;
+                <Button bsStyle='default' data-type={'debit'} onClick={this.selectPaymentMethod.bind(this, 'debit')}>Debit</Button>&nbsp;
+                <Button bsStyle='default' data-type={'cheque'} onClick={this.selectPaymentMethod.bind(this, 'cheque')}>Cheque</Button>&nbsp;
+                <Button bsStyle='default' data-type={'giftcard'} onClick={this.selectPaymentMethod.bind(this, 'giftcard')}>Gift Card</Button>
+            </div>
+        )
+    }
+    
+    renderCashOptions() {
+        let total = parseFloat(CheckoutStore.getTotal().value)
+        let min = Math.ceil(total/5)*5 // 5 dollars is the lowest bill denomination
+        let options = []
+
+        for (let idx = 0; idx < 5; idx++) {
+            options.push(min * (idx + 1))
+        }
+
+        return (
+            <div className='cash-options'>
+                <Button bsStyle='success' data-amount={total} onClick={this.selectChangePreset}>${total.toFixed(2)}</Button>&nbsp;
+                <Button bsStyle='success' data-amount={options[0]} onClick={this.selectChangePreset}>${options[0].toFixed(2)}</Button>&nbsp;
+                <Button bsStyle='success' data-amount={options[1]} onClick={this.selectChangePreset}>${options[1].toFixed(2)}</Button>&nbsp;
+                <Button bsStyle='success' data-amount={options[2]} onClick={this.selectChangePreset}>${options[2].toFixed(2)}</Button>&nbsp;
+                <Button bsStyle='success' data-amount={options[3]} onClick={this.selectChangePreset}>${options[3].toFixed(2)}</Button>&nbsp;
+                {/*<Button bsStyle='default' data-amount={options[4]} onClick={this.calculateChange}>${options[4].toFixed(2)}</Button>&nbsp;*/}
+                <Button bsStyle='disabled' data-amount='custom' onClick={this.toggleCustomPaymentAmount}>Custom</Button>&nbsp;
+            </div>
+        )
+    }
+    
+    selectChangePreset(e) {
+        console.log(e)
+        let orderTotal = parseFloat(CheckoutStore.getTotal().value)
+        
+        let cashAmount = e.target.getAttribute('data-amount')
+        
+        if (isNaN(cashAmount) && cashAmount === 'custom') {
+            if (typeof this.customPaymentAmount !== 'undefined' && 
+                this.customPaymentAmount !== null) {
+                cashAmount = parseFloat(this.customPaymentAmount.value)
+            } else {
+                throw new Error('something went wrong with cash amount')
+                // TODO: This is a kind of a stupid error message I can handle this better
+            }
+        } else if (!isNaN(cashAmount)) {
+            cashAmount = parseFloat(cashAmount)
+        }
+
+        this.setState({
+            cashAmount: (cashAmount).toFixed(2),
+            changeAmount: (cashAmount - orderTotal).toFixed(2)
+        })
+
+        this.completeOrder()
+    }
+    
+    selectPaymentMethod(method) {
+        let methods = ['cash', 'credit', 'debit', 'cheque', 'giftcard']
+        
+        if (methods.indexOf(method) > -1) {
+            console.log('changing payment method to ' + StringHelper.capitalizeFirstLetter(method))
+            this.setState({
+                paymentMethod: StringHelper.capitalizeFirstLetter(method),
+                paymentCode: method
+            }, () => {
+                this.updatePaymentMethod(method, StringHelper.capitalizeFirstLetter(method))
+                this.forceUpdate() // Redraw receipt
+            })
+        } else {
+            console.log('clear payment method')
+            this.setState({
+                paymentMethod: 'In Store',
+                paymentCode: 'in_store'
+            }, () => {
+                this.updatePaymentMethod('in_store', 'In Store')
+                this.forceUpdate() // Redraw receipt
+            })
+        }
+    }
     
     render() {
 		return (
@@ -47,7 +174,7 @@ export default class ChargeModal extends Component {
                 <Modal.Header>
                     <Modal.Title>
                         <span style={{ float: 'right', display: 'inline-block', marginTop: '5px' }}>Charge / Split</span>
-                        <span style={{ float: 'none' }} class='total-charge'>Total:<span style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem' }}>${orderTotal}</span></span>
+                        <span style={{ float: 'none' }} class='total-charge'>Total:<span style={{ display: 'inline-block', marginLeft: '1rem', fontSize: '1.5rem' }}>${this.props.orderTotal}</span></span>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -147,7 +274,7 @@ export default class ChargeModal extends Component {
                                     padding: '18px',
                                     border: '1px solid black'
                                 }}>
-                                {this.renderReceipt()}
+                                {/*this.renderReceipt()*/}
                             </div>
                             
                             <br />

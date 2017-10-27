@@ -93,12 +93,12 @@ import CategoryStep from 'quickcommerce-react/steps/Category.jsx'
 import ProductStep from 'quickcommerce-react/steps/Product.jsx'
 import ProductOptionStep from 'quickcommerce-react/steps/ProductOption.jsx'
 
-/*import ChargeModal from './pos/ChargeModal.jsx'
+import ChargeModal from './pos/ChargeModal.jsx'
 import CompleteModal from './pos/CompleteModal.jsx'
 import ReceiptModal from './pos/ReceiptModal.jsx'
 import ScanModal from './pos/ScanModal.jsx'
 import CodeModal from './pos/CodeModal.jsx'
-import QuantityModal from './pos/QuantityModal.jsx'*/
+import QuantityModal from './pos/QuantityModal.jsx'
 
 const CURRENCY = [
     { name: 'ONE HUNDRED', value: 100.00},
@@ -170,18 +170,14 @@ export default AuthenticatedComponent(class PosComponent extends Component {
         this.optionClicked = this.optionClicked.bind(this)
         this.itemDropped = this.itemDropped.bind(this)
         this.stepClicked = this.stepClicked.bind(this)
-        this.selectPaymentMethod = this.selectPaymentMethod.bind(this)
         this.toggleCustomPaymentAmount = this.toggleCustomPaymentAmount.bind(this)
         this.getChangeAmounts = this.getChangeAmounts.bind(this)
         this.getTotal = this.getTotal.bind(this)
         this.categoryFilterSelected = this.categoryFilterSelected.bind(this)
         this.openDrawer = this.openDrawer.bind(this)
         this.calculateChange = this.calculateChange.bind(this)
-        this.selectChangePreset = this.selectChangePreset.bind(this)
         this.renderOptions = this.renderOptions.bind(this)
         this.renderPlainTxtOptions = this.renderPlainTxtOptions.bind(this)
-        this.renderCashOptions = this.renderCashOptions.bind(this)
-        this.renderPaymentOptions = this.renderPaymentOptions.bind(this)
         this.renderEndOfDayReport = this.renderEndOfDayReport.bind(this)
         this.renderPlainTxtOrder = this.renderPlainTxtOrder.bind(this)
         this.renderPlainTxtReceipt = this.renderPlainTxtReceipt.bind(this)
@@ -1582,30 +1578,6 @@ export default AuthenticatedComponent(class PosComponent extends Component {
         }
     }
     
-    selectPaymentMethod(method) {
-        let methods = ['cash', 'credit', 'debit', 'cheque', 'giftcard']
-        
-        if (methods.indexOf(method) > -1) {
-            console.log('changing payment method to ' + StringHelper.capitalizeFirstLetter(method))
-            this.setState({
-                paymentMethod: StringHelper.capitalizeFirstLetter(method),
-                paymentCode: method
-            }, () => {
-                this.updatePaymentMethod(method, StringHelper.capitalizeFirstLetter(method))
-                this.forceUpdate() // Redraw receipt
-            })
-        } else {
-            console.log('clear payment method')
-            this.setState({
-                paymentMethod: 'In Store',
-                paymentCode: 'in_store'
-            }, () => {
-                this.updatePaymentMethod('in_store', 'In Store')
-                this.forceUpdate() // Redraw receipt
-            })
-        }
-    }
-    
     toggleCustomPaymentAmount() {
         this.setState({
             customPaymentAmount: !this.state.customPaymentAmount
@@ -1688,67 +1660,6 @@ export default AuthenticatedComponent(class PosComponent extends Component {
             cashAmount: (cashAmount).toFixed(2),
             changeAmount: (cashAmount - orderTotal).toFixed(2)
         })
-    }
-    
-    selectChangePreset(e) {
-        console.log(e)
-        let orderTotal = parseFloat(CheckoutStore.getTotal().value)
-        
-        let cashAmount = e.target.getAttribute('data-amount')
-        
-        if (isNaN(cashAmount) && cashAmount === 'custom') {
-            if (typeof this.customPaymentAmount !== 'undefined' && 
-                this.customPaymentAmount !== null) {
-                cashAmount = parseFloat(this.customPaymentAmount.value)
-            } else {
-                throw new Error('something went wrong with cash amount')
-                // TODO: This is a kind of a stupid error message I can handle this better
-            }
-        } else if (!isNaN(cashAmount)) {
-            cashAmount = parseFloat(cashAmount)
-        }
-
-        this.setState({
-            cashAmount: (cashAmount).toFixed(2),
-            changeAmount: (cashAmount - orderTotal).toFixed(2)
-        })
-
-        this.completeOrder()
-    }
-    
-    renderPaymentOptions() {
-        return (
-            <div className='cash-options payment-options'>
-                <Button bsStyle='default' data-type='cash' onClick={this.selectPaymentMethod.bind(this, 'cash')}>Cash</Button>&nbsp;
-                <Button bsStyle='default' data-type='visa' onClick={this.selectPaymentMethod.bind(this, 'credit')}>Visa</Button>&nbsp;
-                <Button bsStyle='default' data-type='mastercard' onClick={this.selectPaymentMethod.bind(this, 'credit')}>Mastercard</Button>&nbsp;
-                <Button bsStyle='default' data-type={'debit'} onClick={this.selectPaymentMethod.bind(this, 'debit')}>Debit</Button>&nbsp;
-                <Button bsStyle='default' data-type={'cheque'} onClick={this.selectPaymentMethod.bind(this, 'cheque')}>Cheque</Button>&nbsp;
-                <Button bsStyle='default' data-type={'giftcard'} onClick={this.selectPaymentMethod.bind(this, 'giftcard')}>Gift Card</Button>
-            </div>
-        )
-    }
-    
-    renderCashOptions() {
-        let total = parseFloat(CheckoutStore.getTotal().value)
-        let min = Math.ceil(total/5)*5 // 5 dollars is the lowest bill denomination
-        let options = []
-
-        for (let idx = 0; idx < 5; idx++) {
-            options.push(min * (idx + 1))
-        }
-
-        return (
-            <div className='cash-options'>
-                <Button bsStyle='success' data-amount={total} onClick={this.selectChangePreset}>${total.toFixed(2)}</Button>&nbsp;
-                <Button bsStyle='success' data-amount={options[0]} onClick={this.selectChangePreset}>${options[0].toFixed(2)}</Button>&nbsp;
-                <Button bsStyle='success' data-amount={options[1]} onClick={this.selectChangePreset}>${options[1].toFixed(2)}</Button>&nbsp;
-                <Button bsStyle='success' data-amount={options[2]} onClick={this.selectChangePreset}>${options[2].toFixed(2)}</Button>&nbsp;
-                <Button bsStyle='success' data-amount={options[3]} onClick={this.selectChangePreset}>${options[3].toFixed(2)}</Button>&nbsp;
-                {/*<Button bsStyle='default' data-amount={options[4]} onClick={this.calculateChange}>${options[4].toFixed(2)}</Button>&nbsp;*/}
-                <Button bsStyle='disabled' data-amount='custom' onClick={this.toggleCustomPaymentAmount}>Custom</Button>&nbsp;
-            </div>
-        )
     }
     
     renderOptions(selectedOptions, itemQty) {
@@ -2709,15 +2620,16 @@ export default AuthenticatedComponent(class PosComponent extends Component {
                     </Grid>
                 </div>
 
-                {/*<ChargeModal />
+                <ChargeModal 
+                    orderTotal = {orderTotal}
+                    />
                 <CompleteModal />
                 <ReceiptModal />
                 
                 <ScanModal />
 				<CodeModal />
 
-                <QuantityModal />*/}
-
+                <QuantityModal />
             </div>
         )
     }
