@@ -1,6 +1,8 @@
 /**
  * The actual QuickCommerce app
  */
+import React, { Component } from 'react'
+import {inject, observer, Provider} from 'mobx-react'
 
 import { DragDropContext } from 'react-dnd'
 import { HashRouter, Switch, Route } from 'react-router-dom';
@@ -32,8 +34,11 @@ import ContentArticle from './pages/ContentArticle'
 import LoginActions from 'quickcommerce-react/actions/LoginActions.jsx'
 import UserActions from 'quickcommerce-react/actions/UserActions.jsx'
 
-import Auth from 'quickcommerce-react/services/AuthService.jsx'
 import CustomerService from 'quickcommerce-react/services/CustomerService.jsx'
+
+import LoginStore from 'quickcommerce-react/stores/LoginStore.jsx'
+import UserStore from 'quickcommerce-react/stores/UserStore.jsx'
+import AuthService from 'quickcommerce-react/services/AuthService.jsx'
 
 console.log('QC API endpoint: ' + QC_API)
 
@@ -42,17 +47,17 @@ try {
     let userToken = sessionStorage.getItem('userToken') || false
     if (userToken === false) {
         // This is triggered on the first page load, we don't know if the user is logged in or not
-        Auth.getToken() // Fetch a token and store it for future requests
+        AuthService.getToken() // Fetch a token and store it for future requests
     } else {
         // Attempt to fetch the account, if the user is logged in we'll store it
-        Auth.fetchAccount()
+        AuthService.fetchAccount()
     }
 
 } catch (err) {
     console.log(err)
 }
 
-class QC extends AuthenticatedApp {
+class QC extends Component {
     constructor(props) {
         super(props)
 		
@@ -135,48 +140,53 @@ class QC extends AuthenticatedApp {
     render() {
         let { errors, notifications } = this.state
         return (
-            <AuthenticatedApp>
-                <div id='outer-container'>
-                    <main id='page-wrap'>
-                        {/*(Object.keys(errors).length > 0 || Object.keys(notifications).length > 0) && (
-                        <Col xs={12}>
-                            {Object.keys(errors).length > 0 && (
-                            <Alert bsStyle='danger' style={{
-                                textAlign: 'center',
-                                margin: '1rem auto 0'
-                            }}>
-                            {this.renderErrors()}
-                            </Alert>
-                            )}
+            <Provider 
+                authService = {AuthService}
+                loginStore = {LoginStore}
+                userStore = {UserStore}>
+                <AuthenticatedApp>
+                    <div id='outer-container'>
+                        <main id='page-wrap'>
+                            {/*(Object.keys(errors).length > 0 || Object.keys(notifications).length > 0) && (
+                            <Col xs={12}>
+                                {Object.keys(errors).length > 0 && (
+                                <Alert bsStyle='danger' style={{
+                                    textAlign: 'center',
+                                    margin: '1rem auto 0'
+                                }}>
+                                {this.renderErrors()}
+                                </Alert>
+                                )}
+                                
+                                {Object.keys(notifications).length > 0 && (
+                                <Alert bsStyle='info' style={{
+                                    textAlign: 'center',
+                                    margin: '1rem auto 0'
+                                }}>
+                                {this.renderNotifications()}
+                                </Alert>
+                                )}
+                            </Col>
+                            )*/}
                             
-                            {Object.keys(notifications).length > 0 && (
-                            <Alert bsStyle='info' style={{
-                                textAlign: 'center',
-                                margin: '1rem auto 0'
-                            }}>
-                            {this.renderNotifications()}
-                            </Alert>
-                            )}
-                        </Col>
-                        )*/}
-                        
-                        <Col xs={12}>
-                            <HashRouter>
-                                <div className='react-app-wrapper'>
-                                    <Route path='/' component={PosPage}/>
-                                    
-                                    <Switch>
-                                        <Route path='/account/login' component={AccountPage}/>
-                                        <Route path='/account/edit' component={AccountPage}/>
-                                        <Route path='/account/edit' component={AccountPage}/>
-                                        <Route exact path='/settings' component={SettingPage}/>
-                                    </Switch>
-                                </div>
-                            </HashRouter>
-                        </Col>
-                    </main>
-                </div>
-            </AuthenticatedApp>
+                            <Col xs={12}>
+                                <HashRouter>
+                                    <div className='react-app-wrapper'>
+                                        <Route path='/' component={PosPage}/>
+                                        
+                                        <Switch>
+                                            <Route path='/account/login' component={AccountPage}/>
+                                            <Route path='/account/edit' component={AccountPage}/>
+                                            <Route path='/account/edit' component={AccountPage}/>
+                                            <Route exact path='/settings' component={SettingPage}/>
+                                        </Switch>
+                                    </div>
+                                </HashRouter>
+                            </Col>
+                        </main>
+                    </div>
+                </AuthenticatedApp>
+            </Provider>
         )
     }
 }
