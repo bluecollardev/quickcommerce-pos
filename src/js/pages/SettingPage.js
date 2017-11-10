@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
 import SettingComponent from 'quickcommerce-react/components/SettingComponent.jsx'
 
-export default AuthenticatedComponent(class SettingPage extends Component {
+export default class SettingPage extends Component {
     render() {       
         return (
             <SettingComponent
@@ -12,4 +12,4 @@ export default AuthenticatedComponent(class SettingPage extends Component {
                 />
         )
     }
-})
+}

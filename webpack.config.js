@@ -19,13 +19,15 @@ var env = {
 	QC_SETTING_ADAPTER: JSON.stringify('qc'), // Options: [qc|custom|...]
     API_VERSION: JSON.stringify('normal'),
 	API_TARGET: JSON.stringify('normal'),	
-	AUTH_MODE: JSON.stringify('mock'), // [normal|legacy|mock]
+	AUTH_MODE: JSON.stringify('legacy'), // [normal|legacy|mock]
     // TODO: Endpoint override should be optional
 	// I'm moving the general case to SettingStore/Adapter
     QC_BASE_URI: JSON.stringify('http://acecoffeeroasters.com/'),
     QC_LEGACY_API: JSON.stringify('http://acecoffeeroasters.com/api/rest/'),
     QC_RESOURCE_API: JSON.stringify('http://acecoffeeroasters.com/qcapi/api/res/'),
-    QC_API: JSON.stringify('http://acecoffeeroasters.com/qcapi/api/v1/')
+    QC_API: JSON.stringify('http://acecoffeeroasters.com/qcapi/api/v1/'),
+    QC_IMAGES_PATH: JSON.stringify('image/'), // Relative path to catalog image folder
+    QC_IMAGES_URI: JSON.stringify('http://acecoffeeroasters.com/image/')
     /*QC_BASE_URI: JSON.stringify('http://acecoffeeroasters/'),
     QC_LEGACY_API: JSON.stringify('http://acecoffeeroasters/api/rest/'),
     QC_RESOURCE_API: JSON.stringify('http://acecoffeeroasters/qcapi/api/res/'),
@@ -83,8 +85,6 @@ module.exports = [{
 		new webpack.DefinePlugin(env)
     ],
     externals: {
-        'react-dom': 'ReactDOM',
-        react: 'React',
         jquery: 'jQuery'
     },
     resolve: {

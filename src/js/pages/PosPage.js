@@ -10,11 +10,7 @@ import { pushRotate as MainMenu, fallDown as CustomerMenu } from 'react-burger-m
 
 // Higher order component adds Auth functions
 import AuthenticatedComponent from 'quickcommerce-react/components/AuthenticatedComponent.jsx'
-
-import SignInForm from 'quickcommerce-react/components/account/SignInForm.jsx' // TODO: Might be a good idea later to wrap this
-
-// The actual shopping cart component itself (includes embedded ProductBrowser)
-import PosComponent from '../components/PosComponent.jsx' // TODO: Might be a good idea later to wrap this
+import PosComponent from 'quickcommerce-react/components/PosComponent.jsx'
 
 export default AuthenticatedComponent(class PosPage extends Component {
     constructor(props) {
@@ -96,6 +92,7 @@ export default AuthenticatedComponent(class PosPage extends Component {
     render() {
         return (
             <PosComponent
+                {...this.props}
                 location = {this.props.location}
                 match = {this.props.match}
                 logged = {this.props.loggedIn}

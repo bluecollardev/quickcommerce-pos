@@ -23,13 +23,7 @@ import AccountMenu from 'quickcommerce-react/components/menu/AccountMenu.jsx'
 
 import PosPage from './pages/PosPage'
 import SettingPage from './pages/SettingPage'
-import HomePage from './pages/HomePage'
 import AccountPage from './pages/AccountPage'
-import ProductPage from './pages/ProductPage'
-import CategoryPage from './pages/CategoryPage'
-import CheckoutPage from './pages/CheckoutPage'
-import ContentBlog from './pages/ContentBlog'
-import ContentArticle from './pages/ContentArticle'
 
 import LoginActions from 'quickcommerce-react/actions/LoginActions.jsx'
 import UserActions from 'quickcommerce-react/actions/UserActions.jsx'
@@ -50,7 +44,7 @@ import StarMicronicsStore from 'quickcommerce-react/stores/StarMicronicsStore.js
 
 console.log('QC API endpoint: ' + QC_API)
 
-try {
+/*try {
     // TODO: Expire!
     let userToken = sessionStorage.getItem('userToken') || false
     if (userToken === false) {
@@ -63,8 +57,28 @@ try {
 
 } catch (err) {
     console.log(err)
-}
+}*/
 
+@inject(deps => ({
+    actions: deps.actions,
+	authService: deps.authService,
+	customerService: deps.customerService,
+    checkoutService: deps.checkoutService,
+    settingService: deps.authService,
+	loginStore: deps.loginStore,
+    userStore: deps.userStore,
+    customerStore: deps.customerStore,
+    checkoutStore: deps.checkoutStore,
+    starMicronicsStore: deps.starMicronicsStore,
+    productStore: deps.productStore,
+	settingStore: deps.settingStore,
+	mappings: deps.mappings, // Per component or global scope?
+	translations: deps.translations, // i8ln transations
+	roles: deps.roles, // App level roles, general authenticated user (not customer!)
+	userRoles: deps.userRoles, // Shortcut or implement via HoC?
+	user: deps.user // Shortcut or implement via HoC?
+}))
+@observer // Wrapped instance or component I fucking forget fuck this stupid project I want my fucking money already fuck you Joe Parrotino you piece of shit
 class QC extends Component {
     constructor(props) {
         super(props)
@@ -148,62 +162,47 @@ class QC extends Component {
     render() {
         let { errors, notifications } = this.state
         return (
-            <Provider 
-                authService = {AuthService}
-                customerService = {CustomerService}
-                customerAddressService = {CustomerAddressService}
-                customerStore = {CustomerStore}
-                customerListStore = {CustomerListStore}
-                checkoutService = {CheckoutService}
-                checkoutStore = {CheckoutStore}
-                productStore = {ProductStore}
-                loginStore = {LoginStore}
-                userStore = {UserStore}
-                settingStore = {SettingStore}
-                starMicronicsStore = {StarMicronicsStore}>
-                <AuthenticatedApp>
-                    <div id='outer-container'>
-                        <main id='page-wrap'>
-                            {/*(Object.keys(errors).length > 0 || Object.keys(notifications).length > 0) && (
-                            <Col xs={12}>
-                                {Object.keys(errors).length > 0 && (
-                                <Alert bsStyle='danger' style={{
-                                    textAlign: 'center',
-                                    margin: '1rem auto 0'
-                                }}>
-                                {this.renderErrors()}
-                                </Alert>
-                                )}
-                                
-                                {Object.keys(notifications).length > 0 && (
-                                <Alert bsStyle='info' style={{
-                                    textAlign: 'center',
-                                    margin: '1rem auto 0'
-                                }}>
-                                {this.renderNotifications()}
-                                </Alert>
-                                )}
-                            </Col>
-                            )*/}
+            <AuthenticatedApp>
+                <div id='outer-container'>
+                    <main id='page-wrap'>
+                        {/*(Object.keys(errors).length > 0 || Object.keys(notifications).length > 0) && (
+                        <Col xs={12}>
+                            {Object.keys(errors).length > 0 && (
+                            <Alert bsStyle='danger' style={{
+                                textAlign: 'center',
+                                margin: '1rem auto 0'
+                            }}>
+                            {this.renderErrors()}
+                            </Alert>
+                            )}
                             
-                            <Col xs={12}>
-                                <HashRouter>
-                                    <div className='react-app-wrapper'>
-                                        <Route path='/' component={PosPage}/>
-                                        
-                                        <Switch>
-                                            <Route path='/account/login' component={AccountPage}/>
-                                            <Route path='/account/edit' component={AccountPage}/>
-                                            <Route path='/account/edit' component={AccountPage}/>
-                                            <Route exact path='/settings' component={SettingPage}/>
-                                        </Switch>
-                                    </div>
-                                </HashRouter>
-                            </Col>
-                        </main>
-                    </div>
-                </AuthenticatedApp>
-            </Provider>
+                            {Object.keys(notifications).length > 0 && (
+                            <Alert bsStyle='info' style={{
+                                textAlign: 'center',
+                                margin: '1rem auto 0'
+                            }}>
+                            {this.renderNotifications()}
+                            </Alert>
+                            )}
+                        </Col>
+                        )*/}
+                        
+                        <Col xs={12}>
+                            <HashRouter>
+                                <div className='react-app-wrapper'>
+                                    <Route path='/' component={PosPage}/>
+                                    
+                                    <Switch>
+                                        <Route path='/account/login' component={AccountPage}/>
+                                        <Route path='/account/edit' component={AccountPage}/>
+                                        <Route exact path='/settings' component={SettingPage}/>
+                                    </Switch>
+                                </div>
+                            </HashRouter>
+                        </Col>
+                    </main>
+                </div>
+            </AuthenticatedApp>
         )
     }
 }
